@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Daddy's Food Login</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial; }
+
+    body {
+      height: 100vh;
+      background-image: linear-gradient(to right,white , navy);
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255,255,255,0.9);
+      padding: 30px;
+      border-radius: 10px;
+      height: 400px;
+      width: 350px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+    }
+
+    button {
+      background: linear-gradient(to right, green, orangered);
+      color: white;
+      border: none;
+    }
+     .container:hover{
+      height: 401px;
+      width: 356px;
+      border-style:solid;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Login 🍔</h2>
+
+  <form onsubmit="login(event)">
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+
+    <button type="submit">Login</button>
+  </form>
+
+  <p>New user? <a href="index.html">Signup</a></p>
+</div>
+
+<script>
+function login(e){
+  e.preventDefault();
+
+  let email = document.getElementById("email").value;
+  let pass = document.getElementById("password").value;
+
+  let storedEmail = localStorage.getItem("email");
+  let storedPass = localStorage.getItem("password");
+
+  if(!storedEmail){
+    alert("Please signup first ⚠️");
+    return;
+  }
+
+  if(email === storedEmail && pass === storedPass){
+    alert("Login Successful 🎉");
+    window.location.href = "food.html";
+  } else {
+    alert("Invalid credentials ❌");
+  }
+}
+</script>
+
+</body>
+</html>

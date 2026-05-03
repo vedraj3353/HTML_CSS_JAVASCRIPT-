@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Daddy's Food SignUp</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial; }
+
+    body {
+      height: 100vh;
+      background-image: linear-gradient(to right,white , navy , );
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255,255,255,0.9);
+      padding: 30px;
+      border-radius: 10px;
+      height: 400px;
+      width: 350px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+    }
+
+    button {
+      background: linear-gradient(to right, green, orangered);
+      color: white;
+      border: none;
+    }
+    .container:hover{
+      height: 401px;
+      width: 356px;
+      border-style:solid;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Signup 🍽️</h2>
+
+  <form onsubmit="signup(event)">
+    <input type="text" id="name" placeholder="Full Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <input type="password" id="confirm" placeholder="Confirm Password" required />
+
+    <button type="submit">Sign Up</button>
+  </form>
+
+  <p>Already have account? <a href="login.html">Login</a></p>
+</div>
+
+<script>
+function signup(e){
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let pass = document.getElementById("password").value;
+  let confirm = document.getElementById("confirm").value;
+
+  if(pass !== confirm){
+    alert("Passwords do not match ❌");
+    return;
+  }
+
+  localStorage.setItem("name", name);
+  localStorage.setItem("email", email);
+  localStorage.setItem("password", pass);
+
+  alert("Signup Successful ✅");
+  window.location.href = "Login.html";
+}
+</script>
+
+</body>
+</html>
